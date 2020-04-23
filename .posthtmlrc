@@ -1,0 +1,8 @@
+{
+    "plugins": {
+        "posthtml-style-expansion": {
+            "encoding": "utf8",
+            "root": "./src"
+        }
+    }
+}

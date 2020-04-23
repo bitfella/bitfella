@@ -1,0 +1,223 @@
+$phi: 1.61803398875;
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$color-base: #5e5e5e;
+$color-highlight: #3d3d3d;
+$color-background: #fff;
+$color-link: #0000ee;
+$color-nav: #8f8f8f;
+$arrow-up: '\2191';
+$arrow-down: '\2193';
+$arrow-start: '\2191\2191';
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Helvetica Neue Light'), 
+    local('HelveticaNeue-Light'),
+    url('./font/HelveticaNeue-Light.woff2') format('woff2'),
+    url('./font/HelveticaNeue-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Helvetica Neue Bold'), 
+    local('HelveticaNeue-Bold'),
+    url('./font/HelveticaNeue-Bold.woff2') format('woff2'),
+    url('./font/HelveticaNeue-Bold.woff') format('woff');
+}
+
+html {
+  color: $color-base;
+  font-family: $font-family;
+  font-size: 100%;
+  font-weight: 300;
+  line-height: $phi;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  background-color: $color-background;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h3 {
+  color: $color-highlight;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.125rem;
+}
+
+h3 {
+  font-size: 0.875rem;
+}
+
+p, ul, dl {
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+ul {
+  padding-left: 1rem;
+  list-style-type: circle;
+}
+
+dt {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+dd {
+  margin: 0;
+}
+
+a, button {
+  transition: all 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: $color-highlight;
+  text-decoration-style: dotted;
+}
+
+a:hover, a:focus, button:hover, button:focus {
+  color: $color-link;
+  text-decoration-color: $color-link;
+  outline: none;
+}
+
+em {
+  font-style: normal;
+  text-decoration: underline;
+}
+
+blockquote q {
+  position: relative;
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+blockquote q::before, blockquote q::after {
+  position: absolute;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+blockquote q::before {
+  top: -0.3125rem;
+  left: -1rem;
+  content: '\201C';
+}
+
+blockquote q::after {
+  right: -1rem;
+  bottom: -0.3125rem;
+  content: '\201E';
+}
+
+blockquote span {
+  display: block;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+blockquote span::before {
+  margin-right: 0.3125rem;
+  content: '\2014';
+}
+
+main {
+  position: relative;
+  display: block;
+}
+
+.slides {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+
+.slide__inner {
+  padding: 1.25rem;
+  max-width: 30rem;
+}
+
+.goto {
+  position: absolute;
+  left: calc(50% - 1.5625rem);
+  display: block;
+  padding: 0;
+  height: 3.125rem;
+  width: 3.125rem;
+  appearance: none;
+  color: $color-nav;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 3.125rem;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.goto.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.goto.prev {
+  top: 0;
+}
+
+.goto.next {
+  bottom: 0;
+}
+
+.goto.prev::after {
+  content: $arrow-up;
+}
+
+.goto.next::after {
+  content: $arrow-down;
+}
+
+main.first .prev {
+  display: none;
+}
+
+main.last .next::after {
+  content: $arrow-start;
+}
