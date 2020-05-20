@@ -82,8 +82,6 @@ function bindKeyEvents() {
 document.addEventListener('DOMContentLoaded', () => {
   const isTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
 
-  console.log(isTouch);
-
   if (!isTouch) {
     appendNavDom();
     observeUI();
